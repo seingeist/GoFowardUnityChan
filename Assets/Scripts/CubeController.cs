@@ -10,6 +10,7 @@ public class CubeController : MonoBehaviour {
     // 消滅位置
     private float deadLine = -10;
 
+
     // Use this for initialization
     void Start()
     {
@@ -27,19 +28,13 @@ public class CubeController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-
         //Cubeや地面に衝突した場合
         if (other.gameObject.tag == "CubeTag" || other.gameObject.tag == "GroundTag")
         {
-            GetComponent<AudioSource>().volume = 0.3f;
+            gameObject.GetComponent<AudioSource>().Play();
         }
 
-        //UnityChanに衝突した場合
-        if (other.gameObject.tag == "Player")
-        {
-            GetComponent<AudioSource>().volume = 0;
-        }
     }
 }
